@@ -1,11 +1,12 @@
 #include <bits/stdc++.h>
 #include <time.h>
+#include <windows.h>
 #include <random>
 
 using namespace std;
-
 class algo
 {
+
 protected:
     int arr[10];
     const int s = 10;
@@ -13,21 +14,43 @@ protected:
 public:
     algo()
     {
+        int k;
         cout << endl;
         char selection;
         do
         {
+            k = 9;
             cout << "\nSelect Algorithm\n"
                  << endl;
+            HANDLE hConsole = GetStdHandle(STD_OUTPUT_HANDLE);
+
+            SetConsoleTextAttribute(hConsole, k);
             cout << "a. Bubble sort" << endl;
+            k++;
+
+            SetConsoleTextAttribute(hConsole, k);
             cout << "b. Selection sort" << endl;
+            k++;
+            SetConsoleTextAttribute(hConsole, k);
             cout << "c. Insertion sort" << endl;
+            k++;
+            SetConsoleTextAttribute(hConsole, k);
             cout << "d. Merge sort" << endl;
+            k++;
+            SetConsoleTextAttribute(hConsole, k);
             cout << "e. Quicksort" << endl;
+            k++;
+            SetConsoleTextAttribute(hConsole, k);
             cout << "f. Countingsort" << endl;
+            k++;
+            SetConsoleTextAttribute(hConsole, k);
             cout << "g. -- EXIT --sort" << endl;
+            k = 9;
+            SetConsoleTextAttribute(hConsole, k);
             cin >> selection;
             select(selection);
+
+            SetConsoleTextAttribute(hConsole, k);
         } while ((selection != 'g') && (selection = 'G'));
         cout << "\nGoodbye...";
     }
@@ -69,7 +92,7 @@ public:
     {
         std::random_device rd;                         // obtain a random number from hardware
         std::mt19937 gen(rd());                        // seed the generator
-        std::uniform_int_distribution<> distr(0, 100); // the range
+        std::uniform_int_distribution<> distr(0, 200); // the range
 
         for (int i = 0; i < 10; i++)
             arr[i] = distr(gen);
@@ -85,6 +108,8 @@ public:
     }
     void bubble_sort()
     {
+        int k = 9;
+        HANDLE hConsole = GetStdHandle(STD_OUTPUT_HANDLE);
         cout << "\nBubble\n"
              << endl;
 
@@ -113,6 +138,15 @@ public:
                     swapped = 1;
                     for (int i = 0; i < 10; i++)
                         cout << arr[i] << " ";
+                    if (k < 15)
+                    {
+                        k++;
+                    }
+                    else
+                    {
+                        k = 9;
+                    }
+                    SetConsoleTextAttribute(hConsole, k);
                     cout << endl;
                 }
             }
@@ -126,6 +160,8 @@ public:
     }
     void selection_sort()
     {
+        int k = 9;
+        HANDLE hConsole = GetStdHandle(STD_OUTPUT_HANDLE);
         cout << "\nSelection\n"
              << endl;
 
@@ -144,12 +180,23 @@ public:
             swap(&arr[min_idx], &arr[step]);
             for (int i = 0; i < 10; i++)
                 cout << arr[i] << " ";
+            if (k < 15)
+            {
+                k++;
+            }
+            else
+            {
+                k = 9;
+            }
+            SetConsoleTextAttribute(hConsole, k);
             cout << endl;
         }
         return;
     }
     void insertion_sort()
     {
+        int k = 9;
+        HANDLE hConsole = GetStdHandle(STD_OUTPUT_HANDLE);
         cout << "\nInsertion\n"
              << endl;
 
@@ -167,6 +214,15 @@ public:
                 --j;
                 for (int i = 0; i < 10; i++)
                     cout << arr[i] << " ";
+                if (k < 15)
+                {
+                    k++;
+                }
+                else
+                {
+                    k = 9;
+                }
+                SetConsoleTextAttribute(hConsole, k);
                 cout << endl;
             }
             arr[j + 1] = key;
@@ -175,6 +231,8 @@ public:
     }
     void merge_sort()
     {
+        int k = 9;
+        HANDLE hConsole = GetStdHandle(STD_OUTPUT_HANDLE);
         cout << "\nMerge\n"
              << endl;
 
@@ -182,6 +240,8 @@ public:
     }
     void quick_sort()
     {
+        int k = 9;
+        HANDLE hConsole = GetStdHandle(STD_OUTPUT_HANDLE);
         cout << "\nQuick\n"
              << endl;
 
@@ -189,6 +249,8 @@ public:
     }
     void count_sort()
     {
+        int k = 9;
+        HANDLE hConsole = GetStdHandle(STD_OUTPUT_HANDLE);
         cout << "\nCounting\n"
              << endl;
         return;
@@ -197,6 +259,8 @@ public:
 
 int main()
 {
+
+    srand(time(0));
     algo run;
     return 0;
 }
